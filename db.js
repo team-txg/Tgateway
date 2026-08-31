@@ -1,0 +1,11 @@
+const fs = require("fs");
+const path = require("path");
+const Database = require("better-sqlite3");
+require("dotenv").config();
+const dbPath = path.resolve(process.env.DB_PATH || "./data/txg.sqlite");
+fs.mkdirSync(path.dirname(dbPath), {recursive:true});
+const db = new Database(dbPath);
+db.pragma("foreign_keys=ON");
+db.pragma("journal_mode=WAL");
+db.pragma("busy_timeout=5000");
+module.exports = db;
