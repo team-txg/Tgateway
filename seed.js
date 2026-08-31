@@ -6,6 +6,6 @@ if(!db.prepare("SELECT id FROM users WHERE email=?").get(email)){
     .run(publicId,"owner",email,"+10000000000",bcrypt.hashSync(password,12));
   console.log("Owner created:",email);
 }else console.log("Owner already exists");
-const defaults={upi_id:"",qr_image_url:"",ads_text:"Welcome to TXG Gateway.",channel_url:"",alert_bot_enabled:"false",alert_chat_id:"",deposit_mode:"manual",withdraw_min:"1",withdraw_max:"100000"};
+const defaults={upi_id:"skimran876@fam",qr_image_url:"",ads_text:"Welcome to TXG Gateway.",channel_url:"",alert_bot_enabled:"true",alert_chat_id:"5478832701",deposit_mode:"manual",withdraw_min:"1",withdraw_max:"100000"};
 for(const [k,v] of Object.entries(defaults)) db.prepare("INSERT OR IGNORE INTO settings(key,value) VALUES(?,?)").run(k,v);
 console.log("Seed complete");
